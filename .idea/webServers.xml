@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d50dc514-b9ff-47da-be53-c336e5c9d32d" name="errands" url="http://169.1.24.233">
+        <fileTransfer host="169.1.24.233" port="22" rootFolder="/var/www/errandsaround.co.za/errandsaround" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
