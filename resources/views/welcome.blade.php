@@ -80,28 +80,28 @@
 
         <li>
             <img src="img/queuing.jpg"> <!-- random image -->
-            <div class="caption left-align" >
+            <div class="caption center-align" >
                 <h3>Queuing Services</h3>
                 <h5 class="light grey-text text-lighten-3">Let Us do the queuing for you.</h5>
             </div>
         </li>
         <li>
             <img src="{{url('img/senior_services.jpg')}}"> <!-- random image -->
-            <div class="caption left-align">
+            <div class="caption center-align">
                 <h3>Senior Services</h3>
                 <h5 class="light grey-text text-lighten-3">We assist elderly citizens with every day tasks.</h5>
             </div>
         </li>
         <li>
             <img src="{{url('img/daily_maid.jpg')}}"> <!-- random image -->
-            <div class="caption left-align">
+            <div class="caption center-align">
                 <h3>Domestic Helpers</h3>
                 <h5 class="light grey-text text-lighten-3">Get a maid at your own convenience.</h5>
             </div>
         </li>
         <li>
             <img src="{{url('img/personal_barbers.jpg')}}"> <!-- random image -->
-            <div class="caption left-align">
+            <div class="caption center-align">
                 <h3>Personal Barbers</h3>
                 <h5 class="light grey-text text-lighten-3">Get a clean cut in the comfort of your home.</h5>
             </div>
@@ -131,7 +131,7 @@
                 </div>
                 <div class="card-action">
                     <a href="#modal2" class="btn modal-trigger btn"><i class="material-icons">card_membership</i> Hire Now</a>
-                    <a href="#modal3" class="btn"><i class="material-icons">assignment</i>Service List</a>
+                    <a href="#modal3" class="btn"><i class="material-icons">assignment</i>More</a>
                 </div>
             </div>
         </div>
