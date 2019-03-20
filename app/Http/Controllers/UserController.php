@@ -2,9 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
+use App\Mail\InviteUser;
+use App\Role;
 use App\User;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -26,7 +35,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles = Role::where('name','!=','app-admin')->get();
+//        $locations = Location::orderBy('location_name','asc')->get();
+
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -36,11 +48,26 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(UserRequest $request, User $model)
+    public function store(UserStoreRequest $request)
     {
-        $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
+        $input = $request->validated();
+        DB::beginTransaction();
+        try{
+            $user = User::create(['name'=>$input['name'],'surname'=>$input['surname'],'contact_number'=>$input['contact_number'],'address'=>$input['address'],'email'=>$input['email'],'password'=>Hash::make('secret')]);
+            $role = Role::where('name','agent')->first();
+            $user->roles()->attach($role->id);
+            $user = $user->load('roles');
 
-        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
+            $verification_url = url('account-completion/'.$user->id);
+            Mail::to($user)->send(new InviteUser($user,$verification_url));
+            DB::commit();
+            return redirect()->route('user.index')->withStatus(__('User successfully created.'));
+        }catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route('user.index')->withStatus(__('An Error occurred.'));
+//            return response()->json(['message' => 'User could not be saved at the moment ' . $e->getMessage()], 400);
+        }
+
     }
 
     /**
@@ -61,14 +88,20 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UserRequest $request, User  $user)
+    public function update(Request $request, User  $user)
     {
-        $user->update(
-            $request->merge(['password' => Hash::make($request->get('password'))])
-                ->except([$request->get('password') ? '' : 'password']
-        ));
+        $input = $request->all();
+        DB::beginTransaction();
+        try{
+            $user->update(['name'=>$input['name'],'surname'=>$input['surname'],'contact_number'=>$input['contact_number'],'address'=>$input['address'],'email'=>$input['email']]);
+            DB::commit();
+            return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
 
-        return redirect()->route('user.index')->withStatus(__('User successfully updated.'));
+        }catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route('user.index')->withStatus(__('An error occurred during updating.'.$e->getMessage()));
+        }
+
     }
 
     /**

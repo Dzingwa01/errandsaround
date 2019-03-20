@@ -6,7 +6,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="{{ route('home') }}">
-            <img src="{{ asset('argon') }}/img/brand/blue.png" class="navbar-brand-img" alt="...">
+            <img src="/img/auth_logo.jpg" class="navbar-brand-img" alt="...">
         </a>
         <!-- User -->
         <ul class="nav align-items-center d-md-none">
@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="{{ asset('argon') }}/img/theme/team-1-800x800.jpg">
+                        <img alt="Image placeholder" src="{{!is_null(\Illuminate\Support\Facades\Auth::user()->profile_picture_url)?'/storage/'.\Illuminate\Support\Facades\Auth::user()->profile_picture_url:'/img/profile_placeholder.jpg'}}">
                         </span>
                     </div>
                 </a>
@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('argon') }}/img/brand/blue.png">
+                            <img src="/img/auth_logo.jpg">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -63,6 +63,7 @@
                             <span></span>
                         </button>
                     </div>
+
                 </div>
             </div>
             <!-- Form -->
@@ -84,58 +85,27 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profile.edit') }}">
-                        <i class="ni ni-single-02 text-yellow"></i> {{ __('User profile') }}
+                    <a class="nav-link" href="{{ url('service') }}">
+                        <i class="ni ni-briefcase-24"></i> {{ __('Services') }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.index') }}">
-                        <i class="ni ni-bullet-list-67 text-red"></i> {{ __('User Management') }}
+                        <i class="ni ni-bullet-list-67 text-blue"></i> {{ __('Users Management') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-planet text-blue"></i> {{ __('Icons') }}
+                    <a class="nav-link" href="{{ route('profile.edit') }}">
+                        <i class="ni ni-single-02 text-yellow"></i> {{ __('My profile') }}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-pin-3 text-orange"></i> {{ __('Maps') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-key-25 text-info"></i> {{ __('Login') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
-                    </a>
-                </li>
+
+
             </ul>
             <!-- Divider -->
             <hr class="my-3">
             <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Documentation</h6>
-            <!-- Navigation -->
-            <ul class="navbar-nav mb-md-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html">
-                        <i class="ni ni-spaceship"></i> Getting started
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html">
-                        <i class="ni ni-palette"></i> Foundation
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html">
-                        <i class="ni ni-ui-04"></i> Components
-                    </a>
-                </li>
-            </ul>
+
         </div>
     </div>
 </nav>

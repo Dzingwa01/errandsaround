@@ -2,21 +2,26 @@
 
 namespace App;
 
+use App\Traits\Uuids;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable  implements MustVerifyEmail
 {
     use Notifiable;
-
+    use Uuids;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $keyType = 'string';
+    protected $guard_name = 'web';
+    public $incrementing = false;
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','surname', 'email','contact_number','password','profile_picture_url','employee_code','dob','address','alternate_number'
     ];
 
     /**
@@ -27,4 +32,42 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function assigned_stock(){
+        return $this->belongsToMany(Product::class)->withPivot('product_quantity');
+    }
+
+    public function location(){
+        return $this->belongsTo(Location::class,'location_id');
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_users','user_id');
+    }
+
+    public function packs(){
+        return $this->hasMany(PackType::class);
+    }
+
+    /**
+     * Checks if User has access to $permissions.
+     */
+    public function hasAccess(array $permissions) : bool
+    {
+        // check if the permission is available in any role
+        foreach ($this->roles as $role) {
+            if($role->hasAccess($permissions)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the user belongs to role.
+     */
+    public function inRole(string $roleSlug)
+    {
+        return $this->roles()->where('slug', $roleSlug)->count() == 1;
+    }
 }

@@ -18,8 +18,8 @@
 </head>
 
 <ul id="dropdownD1" class="dropdown-content">
-    <li><a href="#!">Login</a></li>
-    <li><a href="#!">Register</a></li>
+    <li><a href="{{url('login')}}">Login</a></li>
+    <li><a href="{{url('register')}}">Register</a></li>
     <li class="divider"></li>
     <li><a href="#!">FAQ/Help</a></li>
 </ul>
@@ -32,8 +32,8 @@
     <li class="divider"></li></ul>
 
 <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">Login</a></li>
-    <li><a href="#!">Register</a></li>
+    <li><a href="{{url('login')}}">Login</a></li>
+    <li><a href="{{url('register')}}">Register</a></li>
     <li class="divider"></li>
     <li><a href="#!">FAQ/Help</a></li>
 </ul>
@@ -46,6 +46,7 @@
     <li class="divider"></li>
 
 </ul>
+<div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper">
         <a href="#!" class="brand-logo"><img src="{{url('img/web_logo.jpg')}}"></a>
@@ -61,7 +62,7 @@
             <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"> <i class="material-icons left">account_box</i>Account<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
     </div>
-</nav>
+</nav></div>
 <ul class="sidenav" id="mobile-demo">
     <li><a href="/"><i class="material-icons left">home</i>Home</a></li>
     <li><a class="modal-trigger" href="#modal2"><i class="material-icons left">card_membership</i>Service Hire</a></li>
@@ -69,13 +70,13 @@
 
     <li><a class="modal-trigger" href="#modal1"><i class="material-icons left">info_outline</i>Terms & Conditions</a></li>
     <!-- Dropdown Trigger -->
-    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"> <i class="material-icons left">account_box</i>Account<i class="material-icons right">arrow_drop_down</i></a></li>
+    <li><a class="dropdown-trigger" href="#!" data-target="dropdownD1"> <i class="material-icons left">account_box</i>Account<i class="material-icons right">arrow_drop_down</i></a></li>
 
 </ul>
 
 <body>
 
-<div class="slider">
+<div class="slider" style="margin-top:2em!important;">
     <ul class="slides">
 
         <li>
@@ -126,8 +127,34 @@
             <div class="card blue-grey darken-1 hoverable">
                 <div class="card-content white-text">
                     <span class="card-title">Our Services</span>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
+                   <table>
+                       <thead>
+                       <th></th>
+                       <th></th>
+                       </thead>
+                       <tbody>
+                       <tr><td>Senior Services</td>
+                           <td>Events Coordinators</td>
+                               </tr>
+                       <tr>
+                           <td>Barber at your doorway</td>
+                           <td>Shopping list Handling</td>
+
+                       </tr>
+                       <tr>
+                           <td>Hair Braiding</td>
+                           <td>Domestic Services</td>
+
+                       </tr>
+                       <tr>
+                           <td>Painters</td>
+                           <td>Gardening/ Grass Cutters</td>
+                       </tr>
+                       <tr><td>Deliveries/ Pick-ups</td>
+                           <td>Packers</td>
+                       </tr>
+                       </tbody>
+                   </table>
                 </div>
                 <div class="card-action">
                     <a href="#modal2" class="btn modal-trigger btn"><i class="material-icons">card_membership</i> Hire Now</a>
