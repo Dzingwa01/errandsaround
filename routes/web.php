@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $services = \App\Service::all()->toArray();
+    $services_array = array_chunk($services,3);
+//    dd($services_array);
+    return view('welcome',compact('services_array'));
 });
 Auth::routes();
 

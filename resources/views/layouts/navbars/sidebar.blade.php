@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="/img/auth_logo.jpg">
+                            <img src="/img/auth_logo.jpg" class="rounded">
                         </a>
                     </div>
                     <div class="col-6 collapse-close">

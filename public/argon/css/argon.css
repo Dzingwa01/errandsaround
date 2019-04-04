@@ -8031,7 +8031,9 @@ button.bg-dark:focus
 
 .bg-default
 {
-    background-color: #206169!important;
+    background: linear-gradient(87deg, #289099 0, #225F6E 100%) !important;
+    /*background-image: url(/img/bay_image.jpg)!important;*/
+    background-repeat: no-repeat;
 }
 
 a.bg-default:hover,
@@ -12158,7 +12160,7 @@ button.bg-darker:focus
     .pt-md-4,
     .py-md-4
     {
-        padding-top: 1.5rem !important;
+        padding-top: 2.5rem !important;
     }
     .pr-md-4,
     .px-md-4
@@ -13410,7 +13412,7 @@ button.bg-darker:focus
     .pt-lg-8,
     .py-lg-8
     {
-        padding-top: 8rem !important;
+        padding-top: 6rem !important;
     }
     .pr-lg-8,
     .px-lg-8
@@ -15046,9 +15048,9 @@ button.bg-lighter:focus
 
 .bg-gradient-primary
 {
-    background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
-    /*background: linear-gradient(87deg, #009797 0, #99d5d5 100%) !important;*/
-    background-image: url(/img/bay_image.jpg)!important;
+    /*background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;*/
+    background: linear-gradient(87deg, #289099 0, #225F6E 100%) !important;
+    /*background-image: url(/img/bay_image.jpg)!important;*/
     background-repeat: no-repeat;
 }
 
@@ -15405,8 +15407,8 @@ button.section-darker:focus
 
 .bg-gradient-primary
 {
-    background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
-    background-image: url(/img/bay_image.jpg)!important;
+    background: linear-gradient(87deg, #289099 0, #225F6E 100%) !important;
+    /*background-image: url(/img/bay_image.jpg)!important;*/
     background-repeat: no-repeat;
 }
 
@@ -19147,6 +19149,7 @@ textarea[resize='horizontal']
 {
     max-width: 100%;
     max-height: 2rem;
+    border-radius: 10px;
 }
 @media (min-width: 768px)
 {
