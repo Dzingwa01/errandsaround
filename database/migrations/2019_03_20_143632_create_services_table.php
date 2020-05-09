@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('service_name');
             $table->string('service_description');
             $table->string('service_image_url');
-            $table->decimal('price',8,2);
+            $table->decimal('price',8,2)->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
